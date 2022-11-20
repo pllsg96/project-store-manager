@@ -4,7 +4,7 @@ const { expect } = chai;
 
 const productsModel = require('../../../src/models/products.model');
 const connection = require('../../../src/models/db/connection');
-const mock = require('../models/mock/products.mock');
+const mock = require('./mock/products.model.mock');
 
 describe('Teste da camada model - rota /products', function () {
 
@@ -27,7 +27,7 @@ describe('Teste da camada model - rota /products', function () {
     it('retorna o produto cadastrado com o respectivo Id', async function () {
       const id = 1;
       // Arrange -> configurações do teste
-      sinon.stub(connection, 'execute').resolves([mock.productsDb[0]]);
+      sinon.stub(connection, 'execute').resolves([mock.productsDb]);
 
       // Act -> camada da função
       const response = await productsModel.getById(id);
