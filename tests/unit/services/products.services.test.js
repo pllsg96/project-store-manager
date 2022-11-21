@@ -43,8 +43,6 @@ describe('Teste da camada service - rota /products', function () {
 
       // Act -> camada da função
       const response = await productsService.getById(id);
-      console.log(response);
-
 
       // Assert -> o que esperamos de retorno da função
       expect(response).to.be.deep.equal({ type: '404', message: 'Product not found' });
