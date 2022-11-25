@@ -74,11 +74,11 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3000/products/4",
-    "url": "http://localhost:3000/products/3",
-    "method": "PUT",
+    "url": "http://localhost:3000/products/",
+    "method": "GET",
     "sortNum": 0,
     "created": "2022-11-19T17:32:32.520Z",
-    "modified": "2022-11-25T20:55:12.703Z",
+    "modified": "2022-11-25T21:45:40.774Z",
     "headers": [
       {
         "name": "Content-Type",
@@ -89,7 +89,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"M3lo do2 43n\"\n}",
+      "raw": "{\n  \"name\": \"M3lo do2 22222\"\n}",
       "form": []
     },
     "tests": []
