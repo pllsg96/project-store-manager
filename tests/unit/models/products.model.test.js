@@ -10,27 +10,27 @@ describe('Teste da camada model - rota /products', function () {
 
   afterEach(function () { sinon.restore() });
 
-  describe('Teste da função getAll', function () {
+  describe('Teste da função getAllProducts', function () {
     it('retorna todos os produtos cadastrados', async function () {
       // Arrange -> configurações do teste
       sinon.stub(connection, 'execute').resolves([mock.productsDb]);
 
       // Act -> camada da função
-      const response = await productsModel.getAll();
+      const response = await productsModel.getAllProducts();
 
       // Assert -> o que esperamos de retorno da função
       expect(response).to.be.equal(mock.productsDb);
     });
   });
 
-  describe('Teste da função getById', function () {
+  describe('Teste da função getProductById', function () {
     it('retorna o produto cadastrado com o respectivo Id', async function () {
       const id = 1;
       // Arrange -> configurações do teste
       sinon.stub(connection, 'execute').resolves([mock.productsDb]);
 
       // Act -> camada da função
-      const response = await productsModel.getById(id);
+      const response = await productsModel.getProductById(id);
 
       // Assert -> o que esperamos de retorno da função
       expect(response).to.be.equal(mock.productsDb[0]);

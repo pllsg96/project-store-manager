@@ -99,13 +99,18 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3000/products/",
-    "url": "http://localhost:3000/products/",
+    "url": "http://localhost:3000/products/7",
     "method": "GET",
     "sortNum": 0,
     "created": "2022-11-19T17:38:07.745Z",
-    "modified": "2022-11-19T17:38:07.745Z",
+    "modified": "2022-11-28T20:04:32.825Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"testezozo\"\n}",
+      "form": []
+    },
     "tests": []
   }
 ]

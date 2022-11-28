@@ -10,42 +10,42 @@ describe('Teste da camada service - rota /products', function () {
 
   afterEach(function () { sinon.restore() });
 
-  describe('Teste da função getAll', function () {
+  describe('Teste da função getAllProducts', function () {
     it('Retorna todos os produtos existentes', async function () {
       // Arrange -> configurações do teste
-      sinon.stub(productsModel, 'getAll').resolves(mock.productDb);
+      sinon.stub(productsModel, 'getAllProducts').resolves(mock.productsDb);
 
       // Act -> camada da função
-      const response = await productsService.getAll();
+      const response = await productsService.getAllProducts();
 
       // Assert -> o que esperamos de retorno da função
-      expect(response).to.be.deep.equal({ type: null, message: mock.productDb });
+      expect(response).to.be.deep.equal({ status: 200, result: mock.productsDb });
     });
   });
 
-  describe('Teste da função getById', function () {
+  describe('Teste da função getProductById', function () {
     it('Retorna o respectivo produto através do ID', async function () {
       // Arrange -> configurações do teste
-      const id = 1;
-      sinon.stub(productsModel, 'getAll').resolves(mock.productDb);
+      const id = 2;
+      sinon.stub(productsModel, 'getProductById').resolves(mock.productsDb);
 
       // Act -> camada da função
-      const response = await productsService.getById(id);
+      const response = await productsService.getProductById(id);
 
       // Assert -> o que esperamos de retorno da função
-      expect(response).to.be.deep.equal({ type: null, message: mock.productsDb[0] });
+      expect(response).to.be.deep.equal({ status: 200, result: mock.productsDb[0] });
     });
 
     it('Retorna status 404 quando houver erro', async function () {
       // Arrange -> configurações do teste
-      const id = 4;
-      sinon.stub(productsModel, 'getAll').resolves(mock.productDb);
+      const id = 7;
+      sinon.stub(productsModel, 'getProductById').resolves(mock.productsDb);
 
       // Act -> camada da função
-      const response = await productsService.getById(id);
+      const response = await productsService.getProductById(id);
 
       // Assert -> o que esperamos de retorno da função
-      expect(response).to.be.deep.equal({ type: '404', message: 'Product not found' });
+      expect(response).to.be.deep.equal({ status: 404, message: 'Product not found' });
     });
 
   });
