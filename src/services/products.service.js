@@ -25,23 +25,23 @@ const insertProduct = async (name) => {
 const updateProduct = async (id, name) => {
   const doesProductExist = await productsModel.getProductById(id);
   if (!doesProductExist) {
-    return { type: 404, message: 'Product not found' }; 
+    return { status: 404, message: 'Product not found' }; 
   }
   await productsModel.updateProduct(id, name);
   const updatedProduct = await productsModel.getProductById(id);
 
-  return { type: null, message: updatedProduct };
+  return { status: 200, result: updatedProduct };
 };
 
 const deleteProduct = async (id) => {
   const doesProductExist = await productsModel.getProductById(id);
   if (!doesProductExist) {
-    return { type: 404, message: 'Product not found' };
+    return { status: 404, message: 'Product not found' };
   }
 
   await productsModel.deleteProduct(id);
 
-  return { type: null, message: '' };
+  return { status: 204, result: '' };
 };
 
 module.exports = {

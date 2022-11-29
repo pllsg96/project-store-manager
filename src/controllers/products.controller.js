@@ -26,19 +26,19 @@ const insertProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
   const { name } = req.body;
   const { id } = req.params;
-  const { type, message } = await productService.updateProduct(id, name);
-  if (type) return res.status(type).json({ message });
+  const { status, message, result } = await productService.updateProduct(id, name);
+  if (message) return res.status(status).json({ message });
 
-  return res.status(200).json(message);
+  return res.status(status).json(result);
 };
 
 const deleteProduct = async (req, res) => { 
   const { id } = req.params;
-  const { type, message } = await productService.deleteProduct(id);
+  const { status, message, result } = await productService.deleteProduct(id);
 
-  if (type) return res.status(type).json({ message });
+  if (message) return res.status(status).json({ message });
 
-  return res.status(204).json(message);
+  return res.status(status).json(result);
 };
 
 module.exports = {
