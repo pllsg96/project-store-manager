@@ -37,4 +37,17 @@ describe('Teste da camada model - rota /products', function () {
     });
   });
 
+  describe('Teste da função insertProduct', function () {
+    it('retorna o id do novo produto cadastrado', async function () {
+      // Arrange -> configurações do teste
+      sinon.stub(connection, 'execute').resolves([{ insertId: 5 }]);
+
+      // Act -> camada da função
+      const response = await productsModel.insertProduct("novo valor produto teste");
+
+      // Assert -> o que esperamos de retorno da função
+      expect(response).to.be.equal(5);
+    });
+  });
+
 });

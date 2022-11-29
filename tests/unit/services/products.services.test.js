@@ -26,8 +26,8 @@ describe('Teste da camada service - rota /products', function () {
   describe('Teste da função getProductById', function () {
     it('Retorna o respectivo produto através do ID', async function () {
       // Arrange -> configurações do teste
-      const id = 2;
-      sinon.stub(productsModel, 'getProductById').resolves(mock.productsDb);
+      const id = 1;
+      sinon.stub(productsModel, 'getProductById').resolves(mock.productsDb[0]);
 
       // Act -> camada da função
       const response = await productsService.getProductById(id);
@@ -38,8 +38,8 @@ describe('Teste da camada service - rota /products', function () {
 
     it('Retorna status 404 quando houver erro', async function () {
       // Arrange -> configurações do teste
-      const id = 7;
-      sinon.stub(productsModel, 'getProductById').resolves(mock.productsDb);
+      const id = 4;
+      sinon.stub(productsModel, 'getProductById').resolves(mock.productsDb[4]);
 
       // Act -> camada da função
       const response = await productsService.getProductById(id);
