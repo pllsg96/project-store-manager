@@ -17,18 +17,16 @@ const getProductById = async (req, res) => {
 
 const insertProduct = async (req, res) => {
   const { name } = req.body;
-  const { type, message } = await productService.insertProduct(name);
-  if (type) return res.status(type).json(message);
+  const { status, message, result } = await productService.insertProduct(name);
+  if (message) return res.status(status).json(message);
 
-  return res.status(201).json(message);
+  return res.status(status).json(result);
 };
 
 const updateProduct = async (req, res) => {
   const { name } = req.body;
   const { id } = req.params;
   const { type, message } = await productService.updateProduct(id, name);
-  // console.log(type, { message }, 'aqui');
-  // PERGUNTAR
   if (type) return res.status(type).json({ message });
 
   return res.status(200).json(message);

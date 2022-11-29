@@ -50,4 +50,23 @@ describe('Teste da camada service - rota /products', function () {
 
   });
 
+    describe('Teste da função insertProduct', function () {
+    it('Retorna produto cadastrado', async function () {
+      // Arrange -> configurações do teste
+      const newProduct = {
+        "id": 4,
+        "name": "ProdutoX"
+      };
+
+      sinon.stub(productsModel, 'insertProduct').resolves(4);
+      sinon.stub(productsModel, 'getProductById').resolves(newProduct);
+
+      // Act -> camada da função
+      const response = await productsService.insertProduct("ProdutoX");
+
+      // Assert -> o que esperamos de retorno da função
+      expect(response).to.be.deep.equal({ status: 201, result: newProduct });
+    });
+  });
+
 });
